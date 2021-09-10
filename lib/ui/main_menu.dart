@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:navigator_workshop/ui/dialogs/first_page.dart';
 import 'package:navigator_workshop/ui/named_route/first_page.dart';
+import 'package:navigator_workshop/ui/navigator_drawer/navigator_drawer_page.dart';
 import 'package:navigator_workshop/ui/pop_and_push/first_page.dart';
+import 'package:navigator_workshop/ui/popup_route/first_page.dart';
 import 'package:navigator_workshop/ui/return_data/first_page.dart';
 import 'package:navigator_workshop/ui/send_data_named_route/first_page.dart';
 import 'package:navigator_workshop/ui/send_data_pop_and_push/first_page.dart';
+import 'package:navigator_workshop/ui/tabs/main_tab_page.dart';
+import 'package:navigator_workshop/ui/view_pager/view_pager_page.dart';
 
 class MainMenu extends StatelessWidget {
   const MainMenu({Key? key}) : super(key: key);
@@ -15,7 +19,11 @@ class MainMenu extends StatelessWidget {
     'Send Data Pop and Push',
     'Send Data Named Route',
     'Return Data',
-    'Dialogs'
+    'Dialogs',
+    'Popup Route',
+    'View Pager',
+    'Tabs',
+    'Navigation Drawer'
   ];
 
   @override
@@ -73,6 +81,26 @@ class MainMenu extends StatelessWidget {
       case 5:
         {
           Navigator.push(context, MaterialPageRoute(builder: (_) => Ex6FirstPage()));
+          break;
+        }
+      case 6:
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => Ex7FirstPage()));
+          break;
+        }
+      case 7:
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => ViewPagerPage()));
+          break;
+        }
+      case 8:
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => MainTabPage()));
+          break;
+        }
+      case 9:
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => NavigationDrawerPage()));
           break;
         }
     }

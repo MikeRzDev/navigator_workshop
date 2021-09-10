@@ -11,32 +11,34 @@ class _Ex5SecondPageState extends State<Ex5SecondPage> {
   String? data;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      leading: Container(),
-      title: Text('Return Data'),
-    ),
-    body: Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('Im second page'),
-          SizedBox(height: 20),
-          Container(
-            width: 200,
-            child: TextField(
-              decoration: InputDecoration(
-                labelText: 'My Data'
-              ),
-              onChanged: (text) => data = text,
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async {
+          Navigator.pop(context, data);
+          return true;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            leading: Container(),
+            title: Text('Return Data'),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Im second page'),
+                SizedBox(height: 20),
+                Container(
+                  width: 200,
+                  child: TextField(
+                    decoration: InputDecoration(labelText: 'My Data'),
+                    onChanged: (text) => data = text,
+                  ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(onPressed: () => Navigator.pop(context, data), child: Text('Go Back'))
+              ],
             ),
           ),
-          SizedBox(height: 20),
-          ElevatedButton(
-              onPressed: () => Navigator.pop(context, data),
-              child: Text('Go Back'))
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 }
